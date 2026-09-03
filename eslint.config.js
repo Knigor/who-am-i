@@ -31,7 +31,6 @@ export default defineConfig([
       }],
       '@stylistic/array-bracket-spacing': ['error', 'never'],
       '@stylistic/block-spacing': ['error'],
-      '@stylistic/object-curly-newline': ['error', 'always'],
       '@stylistic/space-before-blocks': ['error'],
       '@stylistic/no-trailing-spaces': ['error'],
     },
