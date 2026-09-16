@@ -49,6 +49,13 @@ export default defineConfig([
           max: 1
         }
       }],
+      'vue/require-default-prop': ['off'],
+      'vue/multi-word-component-names': ['error', {
+        'ignores': [
+          'Button',
+          'Select'
+        ]
+      }]
     },
     languageOptions: {
       parserOptions: {

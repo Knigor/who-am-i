@@ -3,7 +3,8 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["@intlify/unplugin-vue-i18n/messages"]
   },
   "references": [
     { "path": "./tsconfig.app.json" },
