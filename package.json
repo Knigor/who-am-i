@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b --pretty && vite build",
-    "typecheck": "vue-tsc --noEmit -p tsconfig.app.json --pretty",
+    "build": "bun run typecheck && vite build",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json --pretty",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "vite preview"

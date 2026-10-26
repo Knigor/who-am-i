@@ -2,5 +2,5 @@
   <p>Home page</p>
 </template>
 
-<script>
+<script setup lang="ts">
 </script>
