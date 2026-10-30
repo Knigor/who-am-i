@@ -1,20 +1,3 @@
-<script setup lang="ts">
-import type { NavigationMenuViewportProps } from 'reka-ui'
-import type { HTMLAttributes } from 'vue'
-import { reactiveOmit } from '@vueuse/core'
-import {
-  NavigationMenuViewport,
-  useForwardProps,
-} from 'reka-ui'
-import { cn } from '@/lib/utils'
-
-const props = defineProps<NavigationMenuViewportProps & { class?: HTMLAttributes['class'] }>()
-
-const delegatedProps = reactiveOmit(props, 'class')
-
-const forwardedProps = useForwardProps(delegatedProps)
-</script>
-
 <template>
   <div class="absolute top-full left-0 isolate z-50 flex justify-center">
     <NavigationMenuViewport
@@ -29,3 +12,22 @@ const forwardedProps = useForwardProps(delegatedProps)
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import type { NavigationMenuViewportProps } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
+
+import { reactiveOmit } from '@vueuse/core'
+
+import { NavigationMenuViewport } from 'reka-ui'
+
+import { useForwardProps } from 'reka-ui'
+
+import { cn } from '@/lib/utils'
+
+const props = defineProps<NavigationMenuViewportProps & { class?: HTMLAttributes['class'] }>()
+
+const delegatedProps = reactiveOmit(props, 'class')
+
+const forwardedProps = useForwardProps(delegatedProps)
+</script>

@@ -7,6 +7,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-brand: var(--brand);
   --font-heading: var(--font-serif);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -46,6 +47,7 @@
 }
 
 :root {
+  --brand: oklch(0.533516 0.196643 20.5764);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -81,6 +83,7 @@
 }
 
 .dark {
+  --brand: oklch(0.668882 0.219556 19.1768);
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -121,5 +124,17 @@
   body {
     @apply bg-background text-foreground;
     transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer utilities {
+  [data-slot="button"][aria-invalid="true"],
+  [data-slot="select-trigger"][aria-invalid="true"] {
+    @apply border-destructive ring-destructive/20;
+  }
+
+  .dark [data-slot="button"][aria-invalid="true"],
+  .dark [data-slot="select-trigger"][aria-invalid="true"] {
+    @apply ring-destructive/40;
   }
 }
