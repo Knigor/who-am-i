@@ -1,11 +1,11 @@
 <template>
-  <NavigationMenuItem
-    data-slot="navigation-menu-item"
-    v-bind="delegatedProps"
-    :class="cn('relative', props.class)"
-  >
-    <slot />
-  </NavigationMenuItem>
+    <NavigationMenuItem
+        data-slot="navigation-menu-item"
+        v-bind="delegatedProps"
+        :class="cn('relative', props.class)"
+    >
+        <slot />
+    </NavigationMenuItem>
 </template>
 
 <script setup lang="ts">

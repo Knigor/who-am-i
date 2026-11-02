@@ -1,5 +1,5 @@
 <template>
-  <p>Project view</p>
+    <p>Project view</p>
 </template>
 
 <script setup lang="ts">

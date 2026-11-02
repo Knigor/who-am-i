@@ -4,11 +4,11 @@ import en from './en-GB.json'
 import ru from './ru-RU.json'
 
 const i18n = createI18n({
-  locale: 'ru-RU',
-  messages: {
-    'en-GB': en,
-    'ru-RU': ru,
-  }
+    locale: 'ru-RU',
+    messages: {
+        'en-GB': en,
+        'ru-RU': ru,
+    }
 })
 
 export default i18n

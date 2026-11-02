@@ -1,10 +1,10 @@
 <template>
-  <SelectValue
-    data-slot="select-value"
-    v-bind="props"
-  >
-    <slot />
-  </SelectValue>
+    <SelectValue
+        data-slot="select-value"
+        v-bind="props"
+    >
+        <slot />
+    </SelectValue>
 </template>
 
 <script setup lang="ts">

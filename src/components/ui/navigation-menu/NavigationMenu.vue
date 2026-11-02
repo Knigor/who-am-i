@@ -1,14 +1,14 @@
 <template>
-  <NavigationMenuRoot
-    v-slot="slotProps"
-    data-slot="navigation-menu"
-    :data-viewport="viewport"
-    v-bind="forwarded"
-    :class="cn('group/navigation-menu relative flex max-w-max flex-1 items-center justify-center', props.class)"
-  >
-    <slot v-bind="slotProps" />
-    <NavigationMenuViewport v-if="viewport" />
-  </NavigationMenuRoot>
+    <NavigationMenuRoot
+        v-slot="slotProps"
+        data-slot="navigation-menu"
+        :data-viewport="viewport"
+        v-bind="forwarded"
+        :class="cn('group/navigation-menu relative flex max-w-max flex-1 items-center justify-center', props.class)"
+    >
+        <slot v-bind="slotProps" />
+        <NavigationMenuViewport v-if="viewport" />
+    </NavigationMenuRoot>
 </template>
 
 <script setup lang="ts">
@@ -25,10 +25,10 @@ import { useForwardPropsEmits } from 'reka-ui'
 import { cn } from '@/lib/utils.ts'
 
 const props = withDefaults(defineProps<NavigationMenuRootProps & {
-  class?: HTMLAttributes['class']
-  viewport?: boolean
+    class?: HTMLAttributes['class']
+    viewport?: boolean
 }>(), {
-  viewport: true,
+    viewport: true,
 })
 const emits = defineEmits<NavigationMenuRootEmits>()
 

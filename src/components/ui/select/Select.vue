@@ -1,11 +1,11 @@
 <template>
-  <SelectRoot
-    v-slot="slotProps"
-    data-slot="select"
-    v-bind="forwarded"
-  >
-    <slot v-bind="slotProps" />
-  </SelectRoot>
+    <SelectRoot
+        v-slot="slotProps"
+        data-slot="select"
+        v-bind="forwarded"
+    >
+        <slot v-bind="slotProps" />
+    </SelectRoot>
 </template>
 
 <script setup lang="ts">

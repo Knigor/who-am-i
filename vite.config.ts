@@ -5,12 +5,12 @@ import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/who-am-i/',
-  plugins: [vue(), tailwindcss(), VueI18nPlugin()],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@lib': path.resolve(__dirname, './src/lib')
+    base: '/who-am-i/',
+    plugins: [vue(), tailwindcss(), VueI18nPlugin()],
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, './src'),
+            '@lib': path.resolve(__dirname, './src/lib')
+        }
     }
-  }
 })

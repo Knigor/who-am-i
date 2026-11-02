@@ -1,13 +1,13 @@
 <template>
-  <SelectScrollDownButton
-    data-slot="select-scroll-down-button"
-    v-bind="forwardedProps"
-    :class="cn('flex cursor-default items-center justify-center py-1', props.class)"
-  >
-    <slot>
-      <ChevronDown class="size-4" aria-hidden="true" />
-    </slot>
-  </SelectScrollDownButton>
+    <SelectScrollDownButton
+        data-slot="select-scroll-down-button"
+        v-bind="forwardedProps"
+        :class="cn('flex cursor-default items-center justify-center py-1', props.class)"
+    >
+        <slot>
+            <ChevronDown class="size-4" aria-hidden="true" />
+        </slot>
+    </SelectScrollDownButton>
 </template>
 
 <script setup lang="ts">

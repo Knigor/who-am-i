@@ -7,6 +7,12 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 ## ESLint
 
 `bun run lint` проверяет код, `bun run lint:fix` применяет доступные автоисправления.
+Отступы в JavaScript/TypeScript и Vue-шаблонах — 4 пробела.
+В WebStorm/PhpStorm включи `Automatic ESLint configuration` и
+`Run eslint --fix on save` в Settings → Languages & Frameworks →
+JavaScript → Code Quality Tools → ESLint.
+Настройка сохранения локальная (`.idea` не хранится в Git).
+
 Правило `vue/block-order` требует порядок `template`, `script`, `style`, `i18n`.
 `@typescript-eslint/consistent-type-imports` требует `import type` для типов;
 inline `type` внутри обычного импорта запрещён.

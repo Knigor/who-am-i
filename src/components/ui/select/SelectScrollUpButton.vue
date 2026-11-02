@@ -1,13 +1,13 @@
 <template>
-  <SelectScrollUpButton
-    data-slot="select-scroll-up-button"
-    v-bind="forwardedProps"
-    :class="cn('flex cursor-default items-center justify-center py-1', props.class)"
-  >
-    <slot>
-      <ChevronUp class="size-4" aria-hidden="true" />
-    </slot>
-  </SelectScrollUpButton>
+    <SelectScrollUpButton
+        data-slot="select-scroll-up-button"
+        v-bind="forwardedProps"
+        :class="cn('flex cursor-default items-center justify-center py-1', props.class)"
+    >
+        <slot>
+            <ChevronUp class="size-4" aria-hidden="true" />
+        </slot>
+    </SelectScrollUpButton>
 </template>
 
 <script setup lang="ts">
