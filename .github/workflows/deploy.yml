@@ -38,6 +38,9 @@ jobs:
         env:
           VITE_GALLERY_BASE_URL: ${{ vars.VITE_GALLERY_BASE_URL }}
 
+      - name: Unit tests
+        run: bun run test:coverage
+
       - name: Configure Pages
         uses: actions/configure-pages@v6
 

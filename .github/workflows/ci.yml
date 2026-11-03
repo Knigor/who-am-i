@@ -37,4 +37,4 @@ jobs:
           VITE_GALLERY_BASE_URL: ${{ vars.VITE_GALLERY_BASE_URL }}
 
       - name: Unit tests
-        run: bun run test
+        run: bun run test:coverage
