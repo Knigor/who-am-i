@@ -1,21 +1,22 @@
 <template>
     <header class="shrink-0">
-        <div class="mx-auto flex min-h-22 w-full items-center justify-between gap-6 px-6 md:min-h-26.5 md:px-12">
+        <div class="mx-auto flex min-h-20 w-full max-w-270 items-center justify-between gap-6 px-6 font-interface md:min-h-24 md:px-11">
             <RouterLink
                 to="/"
                 :aria-label="t('homeLabel')"
                 class="rounded-sm font-serif text-4xl italic tracking-tighter outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-                k<span class="text-muted-foreground">.</span>
+                k<span class="text-brand">.</span>
             </RouterLink>
 
-            <nav class="hidden items-center gap-1 md:flex" :aria-label="t('navigationLabel')">
+            <nav class="hidden items-center gap-1 lg:flex" :aria-label="t('navigationLabel')">
                 <template v-for="item in navigation" :key="item.key">
                     <Button
                         v-if="hasPage(item.to)"
                         as-child
                         variant="ghost"
-                        class="h-11 px-3 font-normal text-muted-foreground"
+                        class="relative h-11 px-3 text-xs font-normal text-muted-foreground"
+                        :class="{ 'text-portfolio-heading after:absolute after:bottom-0 after:left-3 after:h-0.5 after:w-4 after:bg-brand': route.path === item.to }"
                     >
                         <RouterLink :to="item.to" :aria-current="route.path === item.to ? 'page' : undefined">
                             {{ t(item.key) }}
@@ -42,7 +43,7 @@
                     :aria-label="t('photos')"
                     :title="hasPage('/photos') ? t('photos') : t('comingSoon')"
                 >
-                    <RouterLink v-if="hasPage('/photos')" to="/photos">
+                    <RouterLink v-if="hasPage('/photos')" to="/photos" :aria-current="route.path === '/photos' ? 'page' : undefined">
                         <Camera aria-hidden="true" />
                     </RouterLink>
 
@@ -102,7 +103,7 @@
                     <Button
                         variant="outline"
                         size="icon"
-                        class="size-11 rounded-sm data-[state=open]:border-brand md:hidden"
+                        class="size-11 rounded-sm data-[state=open]:border-brand lg:hidden"
                         :aria-label="t('menu')"
                     >
                         <Menu class="size-6" aria-hidden="true" />
@@ -111,9 +112,9 @@
 
                 <DropdownMenuContent
                     align="end"
-                    :side-offset="10"
+                    :side-offset="12"
                     :collision-padding="16"
-                    class="w-60 max-w-[calc(100vw-2rem)] rounded-sm border-t-brand bg-background p-2 md:hidden"
+                    class="w-60 max-w-[calc(100vw-2rem)] rounded-sm border-t-brand bg-background p-2 lg:hidden"
                     @close-auto-focus="event => { if (isDesktop) event.preventDefault() }"
                 >
                     <DropdownMenuItem
@@ -138,7 +139,7 @@
                     </DropdownMenuItem>
 
                     <DropdownMenuItem :as-child="hasPage('/photos')" :disabled="!hasPage('/photos')">
-                        <RouterLink v-if="hasPage('/photos')" to="/photos">
+                        <RouterLink v-if="hasPage('/photos')" to="/photos" :aria-current="route.path === '/photos' ? 'page' : undefined">
                             <Camera aria-hidden="true" /> {{ t('photos') }}
                         </RouterLink>
 
@@ -237,10 +238,11 @@ const router = useRouter()
 const mode = useColorMode({ initialValue: 'dark', disableTransition: false })
 
 const menuOpen = ref(false)
-const isDesktop = useMediaQuery('(min-width: 768px)')
+const isDesktop = useMediaQuery('(min-width: 1024px)')
 const themeLabel = computed(() => t(mode.value === 'dark' ? 'lightTheme' : 'darkTheme'))
 const navigation = [
     { key: 'home', to: '/' },
+    { key: 'about', to: '/about' },
     { key: 'projects', to: '/projects' },
     { key: 'career', to: '/career' },
 ]
@@ -275,7 +277,8 @@ watch(locale, value => { document.documentElement.lang = value }, { immediate: t
 
 <i18n locale="ru-RU">
 {
-  "home": "Обо мне",
+  "home": "Главная",
+  "about": "Обо мне",
   "projects": "Проекты",
   "career": "Карьера",
   "photos": "Фото",
@@ -292,7 +295,8 @@ watch(locale, value => { document.documentElement.lang = value }, { immediate: t
 
 <i18n locale="en-GB">
 {
-  "home": "About me",
+  "home": "Home",
+  "about": "About me",
   "projects": "Projects",
   "career": "Career",
   "photos": "Photos",

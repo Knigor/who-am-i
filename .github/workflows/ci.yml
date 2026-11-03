@@ -33,6 +33,8 @@ jobs:
 
       - name: Build and check types
         run: bun run build
+        env:
+          VITE_GALLERY_BASE_URL: ${{ vars.VITE_GALLERY_BASE_URL }}
 
       - name: Unit tests
         run: bun run test

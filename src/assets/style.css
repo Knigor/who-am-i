@@ -1,5 +1,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500&family=Chakra+Petch:wght@600&family=IBM+Plex+Mono&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -7,6 +10,17 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --font-profile: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-interface: "Manrope", sans-serif;
+  --font-portfolio: "Arimo", Arial, sans-serif;
+  --font-display: "Chakra Petch", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --color-portfolio-heading: var(--portfolio-heading);
+  --color-portfolio-text: var(--portfolio-text);
+  --color-portfolio-muted: var(--portfolio-muted);
+  --color-portfolio-line: var(--portfolio-line);
+  --color-portrait: var(--portrait);
+  --color-portrait-line: var(--portrait-line);
   --color-brand: var(--brand);
   --font-heading: var(--font-serif);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -47,6 +61,12 @@
 }
 
 :root {
+  --portfolio-heading: oklch(0.232903 0.009543 285.6355);
+  --portfolio-text: oklch(0.448760 0.012933 285.8671);
+  --portfolio-muted: oklch(0.558204 0.012230 285.9969);
+  --portfolio-line: oklch(0.910898 0.005390 286.2922);
+  --portrait: oklch(0.967717 0.002653 286.3502);
+  --portrait-line: oklch(0.895198 0.024923 5.1433);
   --brand: oklch(0.533516 0.196643 20.5764);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -83,8 +103,14 @@
 }
 
 .dark {
+  --portfolio-heading: oklch(0.955705 0.002661 286.3494);
+  --portfolio-text: oklch(0.781868 0.011223 286.1373);
+  --portfolio-muted: oklch(0.663164 0.014643 285.9937);
+  --portfolio-line: oklch(0.287454 0.010859 285.6968);
+  --portrait: oklch(0.215633 0.009734 285.5550);
+  --portrait-line: oklch(0.321268 0.063847 7.7527);
   --brand: oklch(0.668882 0.219556 19.1768);
-  --background: oklch(0.145 0 0);
+  --background: oklch(0.173941 0.004094 285.9665);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -136,5 +162,31 @@
   .dark [data-slot="button"][aria-invalid="true"],
   .dark [data-slot="select-trigger"][aria-invalid="true"] {
     @apply ring-destructive/40;
+  }
+}
+
+@layer components {
+  .profile-layout {
+    --background: oklch(0.985 0.003 70);
+    --portfolio-heading: oklch(0.23 0.012 285);
+    --portfolio-text: oklch(0.47 0.014 285);
+    --portfolio-muted: oklch(0.47 0.014 285);
+    --portfolio-line: oklch(0.87 0.008 285);
+    --portrait: oklch(0.95 0.006 70);
+    --brand: oklch(0.54 0.20 22);
+  }
+
+  .dark .profile-layout {
+    --background: oklch(0.17 0.005 285);
+    --portfolio-heading: oklch(0.94 0.005 70);
+    --portfolio-text: oklch(0.69 0.015 285);
+    --portfolio-muted: oklch(0.69 0.015 285);
+    --portfolio-line: oklch(0.29 0.008 285);
+    --portrait: oklch(0.20 0.008 285);
+    --brand: oklch(0.67 0.22 22);
+  }
+
+  .profile-link {
+    @apply inline-flex min-h-11 items-center gap-3 rounded-sm font-interface text-xs outline-none hover:text-brand focus-visible:ring-2 focus-visible:ring-brand;
   }
 }
