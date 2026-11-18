@@ -64,7 +64,7 @@
                     size="icon"
                     class="size-11 text-muted-foreground"
                 >
-                    <component :is="social.icon" aria-hidden="true" />
+                    <BrandIcon class="size-4" :path="social.icon" />
                 </Button>
 
                 <span class="mx-2 h-4 w-px bg-border" aria-hidden="true" />
@@ -166,9 +166,9 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <component :is="social.icon" aria-hidden="true" />
+                                <BrandIcon class="size-4" :path="social.icon" />
                             </a>
-                            <component :is="social.icon" v-else aria-hidden="true" />
+                            <BrandIcon v-else class="size-4" :path="social.icon" />
                         </DropdownMenuItem>
 
                         <DropdownMenuItem
@@ -210,11 +210,11 @@
 </template>
 
 <script setup lang="ts">
-import type { LucideIcon } from '@lucide/vue'
-
 import { computed, ref, watch } from 'vue'
+import { siGithub, siLinkedin } from 'simple-icons'
 
-import { BriefcaseBusiness, Camera, CodeXml, Menu, Moon, Sun } from '@lucide/vue'
+import { Camera, Menu, Moon, Sun } from '@lucide/vue'
+import BrandIcon from '@/components/BrandIcon.vue'
 import { Button } from '@/components/ui/button'
 import {
     DropdownMenu,
@@ -252,12 +252,12 @@ const languages = [
 ]
 const socials = ref<{
     name: string;
-    icon: LucideIcon;
+    icon: string;
     label: string;
     href: string
 }[]>([
-    { name: 'github', icon: CodeXml, label: 'GitHub', href: 'https://github.com/Knigor' },
-    { name: 'linkedin', icon: BriefcaseBusiness, label: 'LinkedIn', href: 'https://www.linkedin.com/in/knigor/' },
+    { name: 'github', icon: siGithub.path, label: 'GitHub', href: 'https://github.com/Knigor' },
+    { name: 'linkedin', icon: siLinkedin.path, label: 'LinkedIn', href: 'https://www.linkedin.com/in/knigor/' },
 ])
 
 function hasPage(path: string) {

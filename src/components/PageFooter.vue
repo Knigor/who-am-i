@@ -6,10 +6,6 @@
                     <h2 class="text-[25px] font-medium tracking-[-0.04em] text-portfolio-heading">
                         {{ t('contacts') }}
                     </h2>
-
-                    <p class="mt-3 max-w-60 text-xs leading-5 text-portfolio-text">
-                        {{ t('contactDescription') }}
-                    </p>
                 </div>
 
                 <div class="grid grid-cols-2 gap-6 md:gap-8">
@@ -26,14 +22,12 @@
 
                             <ArrowUpRight class="size-4 shrink-0" aria-hidden="true" />
                         </span>
-
-                        <span class="mt-1 block font-mono text-[11px] leading-5 text-portfolio-muted">{{ t(contact.description) }}</span>
                     </a>
                 </div>
             </div>
 
             <div class="mt-8 flex items-center justify-between gap-4 font-mono text-[9px] leading-4 text-portfolio-muted md:mt-13 md:text-[10px]">
-                <p>© {{ year }} {{ t('name') }}</p>
+                <p>© {{ year }} knigor</p>
 
                 <a
                     href="https://github.com/Knigor/who-am-i"
@@ -58,18 +52,20 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const year = new Date().getFullYear()
 const contacts = [
-    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/knigor/', description: 'getInTouch' },
-    { name: 'GitHub', href: 'https://github.com/Knigor', description: 'codeAndProjects' },
+    {
+        name: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/knigor/'
+    },
+    {
+        name: 'GitHub',
+        href: 'https://github.com/Knigor'
+    },
 ]
 </script>
 
 <i18n locale="ru-RU">
 {
     "contacts": "Контакты",
-    "contactDescription": "По вопросам работы и совместных проектов.",
-    "getInTouch": "Связаться со мной",
-    "codeAndProjects": "Код и проекты",
-    "name": "Игорь Кретов",
     "source": "Исходный код"
 }
 </i18n>
@@ -77,10 +73,6 @@ const contacts = [
 <i18n locale="en-GB">
 {
     "contacts": "Contact",
-    "contactDescription": "For work enquiries and projects together.",
-    "getInTouch": "Get in touch",
-    "codeAndProjects": "Code and projects",
-    "name": "Igor Kretov",
     "source": "Source code"
 }
 </i18n>

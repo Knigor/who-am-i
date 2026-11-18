@@ -69,6 +69,7 @@ export default defineConfig([
             'vue/require-default-prop': ['off'],
             'vue/multi-word-component-names': ['error', {
                 'ignores': [
+                    'Badge',
                     'Button',
                     'Select'
                 ]

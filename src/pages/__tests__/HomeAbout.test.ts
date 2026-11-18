@@ -52,6 +52,11 @@ describe('Главная и обо мне', () => {
         expect(within(main).getByText(/Разрабатываю интерфейсы на/).textContent).toContain('Vue и TypeScript')
         expect(within(main).getByRole('region', { name: 'Основные направления' })).toBeTruthy()
 
+        const technologies = within(main).getByRole('list', { name: 'Технологии' })
+        expect(within(technologies).getAllByRole('listitem').map(item => item.textContent?.trim())).toEqual([
+            'Vue 3', 'TypeScript', 'JavaScript', 'Vitest', 'Nuxt', 'PHP', 'React',
+        ])
+
         await user.click(within(main).getByRole('link', { name: 'Подробнее обо мне' }))
 
         expect(await within(main).findByRole('heading', { level: 1, name: 'Обо мне.' })).toBeTruthy()
@@ -73,7 +78,7 @@ describe('Главная и обо мне', () => {
         expect(await screen.findByRole('heading', { level: 1, name: 'About me.' })).toBeTruthy()
         expect(screen.getByRole('region', { name: 'How I work' })).toBeTruthy()
         expect(screen.getByRole('region', { name: 'Hackathons and personal projects' })).toBeTruthy()
-        expect(screen.getByRole('contentinfo').textContent).toContain('Get in touch')
+        expect(within(screen.getByRole('contentinfo')).getByRole('heading', { name: 'Contact' })).toBeTruthy()
 
         const contents = screen.getByRole('navigation', { name: 'On this page' })
         const link = within(contents).getByRole('link', { name: 'How I work' })
@@ -98,5 +103,6 @@ describe('Главная и обо мне', () => {
         expect(screen.getByRole('region', { name: 'Main areas of work' })).toBeTruthy()
         expect(screen.getByText(/I build interfaces with/).textContent).toContain('Vue and TypeScript')
         expect(screen.getByRole('link', { name: 'More about me' }).getAttribute('href')).toBe('/about')
+        expect(screen.getByRole('list', { name: 'Technologies' })).toBeTruthy()
     })
 })

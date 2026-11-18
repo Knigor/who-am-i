@@ -34,11 +34,13 @@
                     </RouterLink>
                 </div>
 
-                <ul class="mt-7 flex flex-wrap gap-x-3 gap-y-2 font-mono text-[11px] text-portfolio-muted" :aria-label="t('stack')">
-                    <li v-for="(technology, index) in stack" :key="technology" class="flex gap-3">
-                        <span v-if="index" class="text-brand" aria-hidden="true">/</span>
+                <ul class="mt-7 flex flex-wrap gap-2" :aria-label="t('stack')">
+                    <li v-for="technology in stack" :key="technology.name">
+                        <Badge variant="outline" class="min-h-9 gap-2 border-portfolio-line bg-background px-3 py-2 font-interface text-xs text-portfolio-heading [&>svg]:size-4">
+                            <BrandIcon class="size-4 text-brand" :path="technology.icon" />
 
-                        {{ technology }}
+                            {{ technology.name }}
+                        </Badge>
                     </li>
                 </ul>
             </div>
@@ -51,8 +53,6 @@
                 <h2 id="directions-title" class="text-[25px] leading-[1.3] font-medium tracking-[-0.04em]">
                     {{ t('directionsTitle') }}
                 </h2>
-
-                <span class="hidden font-mono text-[11px] tracking-[0.12em] text-portfolio-muted uppercase md:block">{{ t('directionsLabel') }}</span>
             </div>
 
             <div class="grid gap-7 md:grid-cols-3 md:gap-8">
@@ -65,10 +65,6 @@
 
                     <p class="col-start-2 text-[13px] leading-[1.85] text-portfolio-text">
                         {{ t(`${direction}.description`) }}
-                    </p>
-
-                    <p class="col-start-2 mt-3 font-mono text-[10px] leading-[1.8] text-portfolio-muted md:mt-5">
-                        {{ t(`${direction}.technologies`) }}
                     </p>
                 </article>
             </div>
@@ -108,16 +104,28 @@
 </template>
 
 <script setup lang="ts">
+import { siVuedotjs, siReact, siPhp, siVitest, siTypescript, siNuxtdotjs, siJavascript } from 'simple-icons'
+
 import { ArrowUpRight } from '@lucide/vue'
 import { RouterLink } from 'vue-router'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import BrandIcon from '@/components/BrandIcon.vue'
 import DecorativeOrbit from '@/components/DecorativeOrbit.vue'
 import PortraitPlaceholder from '@/components/PortraitPlaceholder.vue'
 
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
-const stack = ['Vue 3', 'TypeScript', 'Nuxt', 'Vitest']
+const stack = [
+    { name: 'Vue 3', icon: siVuedotjs.path },
+    { name: 'TypeScript', icon: siTypescript.path },
+    { name: 'JavaScript', icon: siJavascript.path },
+    { name: 'Vitest', icon: siVitest.path },
+    { name: 'Nuxt', icon: siNuxtdotjs.path },
+    { name: 'PHP', icon: siPhp.path },
+    { name: 'React', icon: siReact.path },
+]
 const directions = ['interfaces', 'components', 'testing'] as const
 </script>
 
@@ -132,21 +140,17 @@ const directions = ['interfaces', 'components', 'testing'] as const
     "projectsLink": "Мои проекты",
     "stack": "Технологии",
     "directionsTitle": "Основные направления",
-    "directionsLabel": "То, над чем работаю",
     "interfaces": {
         "title": "Продуктовые интерфейсы",
         "description": "Разрабатываю новые функции, связываю интерфейс с API и адаптирую его под разные экраны.",
-        "technologies": "Vue · Nuxt · TypeScript"
     },
     "components": {
         "title": "Общие UI-компоненты",
         "description": "Развиваю библиотеку компонентов и встраиваемые интерфейсы. Работаю с локализацией и состояниями UI.",
-        "technologies": "Компоненты · vue-i18n · Module Federation"
     },
     "testing": {
         "title": "Развитие и тестирование",
         "description": "Участвую в переходе с Vue 2 на Vue 3, рефакторю код и покрываю пользовательские сценарии тестами.",
-        "technologies": "Vitest · Testing Library · Playwright"
     },
     "now": "Сейчас",
     "currentRole": "Фронтенд-разработчик в",
@@ -169,21 +173,17 @@ const directions = ['interfaces', 'components', 'testing'] as const
     "projectsLink": "My projects",
     "stack": "Technologies",
     "directionsTitle": "Main areas of work",
-    "directionsLabel": "What I work on",
     "interfaces": {
         "title": "Product interfaces",
         "description": "I develop new features, connect interfaces to APIs and adapt them to different screen sizes.",
-        "technologies": "Vue · Nuxt · TypeScript"
     },
     "components": {
         "title": "Shared UI components",
         "description": "I develop a component library and embeddable interfaces, working with localisation and UI states.",
-        "technologies": "Components · vue-i18n · Module Federation"
     },
     "testing": {
         "title": "Maintenance and testing",
         "description": "I help migrate Vue 2 to Vue 3, refactor code and cover user journeys with tests.",
-        "technologies": "Vitest · Testing Library · Playwright"
     },
     "now": "Now",
     "currentRole": "Frontend developer at",
